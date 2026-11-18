@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Plain-language guide to Modigliani-Miller, tax shields, financial distress, trade-off theory and WACC.">
+<title>Capital structure explained · Optimal Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#FFF8F0" stroke-width="1.6"/><path d="M9 4.2v9.6M5.2 9h7.6" stroke="#FFF8F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      Optimal Capital
+    </a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a href="index.html">Simulator</a>
+      <a href="learn.html" aria-current="page">Learn</a>
+      <a href="scenarios.html">Scenarios</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Evening</button>
+  </div>
+</header>
+
+<main id="main" class="page reveal">
+  <p class="eyebrow">A short course</p>
+  <h1>Capital structure explained</h1>
+  <p class="lede">How a firm splits funding between debt and equity changes both its tax bill and its risk. These five ideas are the backbone of the simulator.</p>
+
+  <article class="prose">
+    <section>
+      <h2>Modigliani–Miller</h2>
+      <p>In 1958 Franco Modigliani and Merton Miller showed that, in a frictionless market with no taxes and no bankruptcy costs, firm value does not depend on the mix of debt and equity. Cheap debt is offset by a higher required return on the remaining equity. The pie is the same size; only the slices change.</p>
+      <div class="formula">V<sub>L</sub> = V<sub>U</sub> <span class="muted">(no taxes, no distress)</span></div>
+    </section>
+
+    <figure class="illust" aria-label="Illustration of MM versus trade-off theory">
+      <svg viewBox="0 0 640 220" role="img">
+        <title>Flat MM value versus a hump-shaped trade-off value</title>
+        <text x="16" y="24" fill="currentColor" font-family="Inter,sans-serif" font-size="13">Firm value vs. debt ratio</text>
+        <line x1="48" y1="180" x2="600" y2="180" stroke="currentColor" stroke-opacity=".35"/>
+        <line x1="48" y1="40" x2="48" y2="180" stroke="currentColor" stroke-opacity=".35"/>
+        <path d="M48 118 H600" stroke="#B08972" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/>
+        <path d="M48 150 C 180 40, 360 40, 600 168" stroke="#E05A3C" stroke-width="3.5" fill="none"/>
+        <circle cx="300" cy="62" r="6" fill="#C98912"/>
+        <text x="312" y="58" font-family="Inter,sans-serif" font-size="12" fill="currentColor">Trade-off optimum</text>
+        <text x="430" y="108" font-family="Inter,sans-serif" font-size="12" fill="currentColor">MM (no frictions)</text>
+        <text x="280" y="206" font-family="Inter,sans-serif" font-size="12" fill="currentColor">Debt / capital →</text>
+      </svg>
+      <figcaption>Without frictions, value is a flat line. With taxes and distress, value rises then falls.</figcaption>
+    </figure>
+
+    <section>
+      <h2>The tax shield</h2>
+      <p>Interest is tax-deductible in most corporate systems. Debt therefore reduces the government’s claim on operating profits. In a simple perpetuity, the present value of that shield is the tax rate times the amount of debt—so long as the firm can actually use the deduction.</p>
+      <div class="formula">V<sub>L</sub> = V<sub>U</sub> + T<sub>c</sub> × D <span class="muted">(MM with corporate taxes)</span></div>
+      <p class="muted">The gold band on the value chart is this extra slice sitting on top of unlevered value.</p>
+    </section>
+
+    <section>
+      <h2>Financial distress costs</h2>
+      <p>Leverage is not free. As coverage thins, lenders demand a higher spread, equity holders require a higher return, and the chance of costly distress (legal fees, fire sales, lost customers) rises. Those costs eat the tax advantage and can more than reverse it.</p>
+      <p>The simulator proxies this with a synthetic rating table: interest coverage maps to a spread, then a distress-sensitivity slider scales how aggressively that spread climbs with leverage.</p>
+    </section>
+
+    <figure class="illust" aria-label="Tax shield versus distress costs">
+      <svg viewBox="0 0 640 180" role="img">
+        <title>Two opposing forces on leverage</title>
+        <rect x="40" y="40" width="250" height="100" rx="16" fill="#F6E3A8"/>
+        <text x="165" y="78" text-anchor="middle" font-family="Fraunces,serif" font-size="20" fill="#2C1810">Tax shield</text>
+        <text x="165" y="106" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#6B4638">pulls debt up</text>
+        <rect x="350" y="40" width="250" height="100" rx="16" fill="#F8D4C8"/>
+        <text x="475" y="78" text-anchor="middle" font-family="Fraunces,serif" font-size="20" fill="#2C1810">Distress</text>
+        <text x="475" y="106" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#6B4638">pulls debt down</text>
+      </svg>
+      <figcaption>Trade-off theory is the balance of these two forces.</figcaption>
+    </figure>
+
+    <section>
+      <h2>Trade-off theory</h2>
+      <p>Firms borrow until the marginal tax benefit equals the marginal cost of distress. That interior maximum is the “optimal” capital structure in this model. Stable cash-flow businesses (utilities) can support more debt; volatile or already-stressed businesses should carry less.</p>
+    </section>
+
+    <section>
+      <h2>WACC</h2>
+      <p>The weighted average cost of capital is the blended required return on the firm’s capital. After-tax debt is cheaper than equity, but adding debt also lifts both component costs. WACC therefore typically falls, then rises. The debt ratio that minimizes WACC is the same point that maximizes a zero-growth perpetuity of after-tax EBIT.</p>
+      <div class="formula">WACC = (E/V) R<sub>e</sub> + (D/V) R<sub>d</sub> (1 − T<sub>c</sub>)</div>
+      <div class="formula">R<sub>e</sub> = R<sub>f</sub> + β<sub>L</sub> × ERP &nbsp;&nbsp; β<sub>L</sub> = β<sub>u</sub> [1 + (1 − T<sub>c</sub>) D/E]</div>
+      <p><a class="btn" href="index.html">Open the simulator</a></p>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <p>Educational model of trade-off theory. Not investment advice.</p>
+  <p><a href="about.html">Methodology</a> · <a href="index.html">Simulator</a></p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
